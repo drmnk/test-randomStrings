@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Frontend test</title>
+  </head>
+  <body>
+    <!-- Justify container -->
+    <div class="flex justify-center min-h-screen bg-slate-200">
+      <!-- Main container -->
+      <div class="w-[900px] bg-white m-2 shadow-xl">
+        <!-- Controls-->
+        <div
+          id="controls"
+          class="sticky top-0 flex flex-col sm:flex-row bg-slate-300 shadow-xs space-y-4 sm:space-y-0 sm:space-x-8 p-3"
+        >
+          <!-- First/Last Button Container -->
+          <div class="flex flex-row space-x-2">
+            <button
+              id="scrollToFirst"
+              type="button"
+              class="controlButtons w-1/2 sm:w-auto focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              Первая
+            </button>
+
+            <button
+              id="scrollToLast"
+              type="button"
+              class="controlButtons w-1/2 sm:w-auto focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            >
+              Последняя
+            </button>
+          </div>
+
+          <!-- Jump To Input&Button --->
+          <div class="flex flex-row space-x-4 w-full">
+            <div class="grow">
+              <input
+                id="entryInput"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Номер записи..."
+              />
+            </div>
+
+            <button
+              id="scrollToInput"
+              type="button"
+              class="controlButtons text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Перейти
+            </button>
+          </div>
+        </div>
+
+        <!-- Entries container -->
+        <div id="test" class="p-2">
+          <!-- Invisible template element-->
+          <div id="entry" class="hidden">
+            <div
+              id="entry-{{ entry.id }}"
+              class="entry even:bg-white odd:bg-slate-100 p-2"
+            >
+              {{ entry.id }} {{ entry.text }}
+            </div>
+          </div>
+
+          <!-- Entries table -->
+          <div id="entriesTable" class="w-full"></div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
