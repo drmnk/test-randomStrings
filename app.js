@@ -91,12 +91,8 @@ function scrollToEntry(e) {
 
     const controlsHeight = controls.offsetHeight
 
-    const rect = document.getElementById(elementId).getBoundingClientRect()
-
-    console.log(rect.top - controlsHeight)
-
     window.scrollTo({
-        top: rect.top,
+        top: document.getElementById(elementId).offsetTop - controlsHeight,
         behavior: 'smooth'
     })
 }
@@ -105,6 +101,7 @@ function getInputValue(maxValue) {
     const inputValue = entryInput.value
 
     if (isNaN(inputValue) || (inputValue > maxValue)) {
+        alert('Либо вы ввели не число, либо оно больше количества строк на странице')
         return false
     }
 
