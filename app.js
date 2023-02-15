@@ -7,15 +7,10 @@ class EntriesStore {
             this._lines.push(this.generateRandomString())
         }
         await sleep(1000)
-        return this
     }
 
     get() {
         return this._lines
-    }
-
-    getCount() {
-        return count(this._lines)
     }
 
     generateRandomString()
@@ -26,18 +21,18 @@ class EntriesStore {
 
 const entriesList = document.querySelector('#entriesTable')
 const entryTemplate = document.querySelector('#entry').innerHTML
-const scrollToFirst = document.querySelector('#scrollToFirst')
-const scrollToLast = document.querySelector('#scrollToLast')
 const controlButtons = document.querySelectorAll('.controlButtons')
 const entryInput = document.querySelector('#entryInput')
 
 const eStore = new EntriesStore()
 
-
 fillList(eStore, entriesList, entryTemplate)
 
 async function fillList(store, list, template) {
     await fillStore(store)
+
+    // отрендерим каждую строчку в шаблонный элемент, после чего
+    // соединим в общий кусок HTML
     const insert = eStore.get().map(function(item, index) {
         return renderTemplate(template, {
             id: index,
@@ -73,6 +68,7 @@ function scrollToEntry(e) {
     // Ну, подумаем об элегантности попозже
     const entriesCount = document.querySelectorAll('.entry').length - 2
 
+    // На основании класса кнопки выберем элемент, к которому надо перейти
     switch (e.currentTarget.id) {
         case 'scrollToFirst':
             elementId += '0'
